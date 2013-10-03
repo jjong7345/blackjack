@@ -17,10 +17,10 @@ end
 deck = suffleDeck
 
 2.times do
-  #player << deck.pop()
+  player << deck.pop()
 end
 
-player = [["Diamond", "A"], ["Diamond", "6"]]
+#player = [["Diamond", "A"], ["Diamond", "6"]]
 
 2.times do
   dealer << deck.pop()
