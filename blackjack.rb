@@ -20,7 +20,7 @@ deck = suffleDeck
   player << deck.pop()
 end
 
-player = [["Diamond", "A"], ["Diamond", "6"]]
+#player = [["Diamond", "A"], ["Diamond", "6"]]
 
 2.times do
   dealer << deck.pop()
@@ -28,6 +28,7 @@ end
 
 def total(cards)
   t = 0 
+  # re-order cards array to push "A"s at the end
   temp = []
   temp2 = []
   cards.each do |c| 
