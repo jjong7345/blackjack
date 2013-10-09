@@ -94,6 +94,10 @@ end
 class Blackjack
 
   def initialize
+    
+  end
+
+  def run
     @player = Player.new("Jong")
     @dealer = Dealer.new
     @deck = Deck.new
@@ -103,20 +107,15 @@ class Blackjack
       @dealer.recieve_card(@deck.deal)
     end
 
-  end
-
-  def run
     puts "Welcome, #{@player.name}! Let's play Blackjack."
     @player.cards.each {|c| puts "#{@player.name} has #{c.info}" }
     @dealer.cards.each {|c| puts "Dealer havs #{c.info}" }
     puts "#{@player.name} has #{@player.total}"
     puts "Dealer has #{@dealer.total}"
     if (@player.total == 21)
-      puts "#{@player.name} wins!! You have BlackJack!!"
-      return
+      puts "#{@player.name} wins!! #{@player.name} has BlackJack!!"
     elsif (@dealer.total == 21) 
       puts "Dealer wins!! Dealer has BlackJack!!"
-      return
     else
       # Neither has BlasckJack. Let's play!!
       while true 
@@ -155,17 +154,19 @@ class Blackjack
         end
       end
     end
+
+    while true
+      puts "play again? 1)Yes 2)No"
+      again = gets.chomp
+      if (again == "1") 
+        run
+      else
+        puts "Thanks for playing"
+        break
+      end
+    end
   end
 end
-game = Blackjack.new.run
-while true
-  puts "play again? 1)Yes 2)No"
-  again = gets.chomp
-  if (again == "1") 
-    game = Blackjack.new.run
-  else
-    puts "Thanks for playing"
-    break
-  end
-end
+Blackjack.new.run
+
 
