@@ -28,28 +28,25 @@ end
 
 def total(cards)
   t = 0 
-  ace = 0
-  cards.each do |c|
+  # re-order cards array to push "A"s at the end
+  temp = []
+  temp2 = []
+  cards.each do |c| 
+    if (c[1] != "A") ? (temp << c) : (temp2 << c)
+    end
+  end
+  temp = temp.concat(temp2)
+
+  temp.each do |c|
     if (c[1] == "J") || (c[1] == "Q") || (c[1] == "K")
       t = t + 10
     elsif (c[1] == "A")
-      ace = ace + 1
-      #if (t + 11) > 21
-       # t = t + 1
-      #else 
-       # t = t +11
-      #end
+      if ((t + 11) > 21) ? (t = t + 1) : (t = t +11)
+      end
     else
       t = t + c[1].to_i
     end
   end
-  ace.times {
-    if (t + 11) > 21
-     t = t + 1
-    else 
-     t = t +11
-    end
-  }
   return t   
 end
 
